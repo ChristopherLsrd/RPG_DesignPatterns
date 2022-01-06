@@ -9,8 +9,8 @@ public abstract class Decorator extends Arme{
     }
 
     @Override
-    void attaquer(){
-        arme.attaquer();
+    void attaque(Personnage personnage){
+        personnage.setAttaque(personnage.getAttaque()+this.degats);
     }
 
 
