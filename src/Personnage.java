@@ -5,73 +5,45 @@ public abstract class Personnage {
     protected int mana;
     protected Arme arme;
 
-    protected Etat _Etat;
-    protected EtatVivant _EtatVivant;
-    protected EtatAgonie _EtatAgonie;
-    protected EtatMort _EtatMort;
 
 
-   /* public Personnage(int hp, int attaque, int mana) {
-        this.hp = hp;
-        this.attaque = attaque;
-        this.mana = mana;
 
-        this._EtatMort=new EtatMort(this);
-        this._EtatAgonie=new EtatAgonie(this);
-        this._EtatVivant=new EtatVivant(this);
+    public abstract int getHp();
 
-        this._Etat=_EtatVivant;
+    public abstract void setHp(int hp);
 
-    }*/
 
-    public int getHp() {
-        return hp;
-    }
+    public abstract int getMana();
 
-    public void setHp(int hp) {
-        this.hp = hp;
-    }
+    public abstract void setMana(int mana);
 
-    public int getAttaque() {
-        return attaque;
-    }
+    public abstract Arme getArme();
 
-    public void setAttaque(int attaque) {
-        this.attaque = attaque;
-    }
+    public  abstract void setArme(Arme arme);
 
-    public int getMana() {
-        return mana;
-    }
+    public abstract int getAttaque();
 
-    public void setMana(int mana) {
-        this.mana = mana;
-    }
+    public abstract void setAttaque(int attaque);
 
-    public Arme getArme() {
-        return arme;
-    }
+    public abstract void attaquer(Monstre monstre);
 
-    public void changerEtatMort(){
-        _Etat=_EtatMort;
+    public abstract void attaqueParMonstre(int degats);
 
-    }
-
-    public void changerEtatAgonie(){
-        _Etat=_EtatAgonie;
-        setAttaque((int)(getAttaque()*1.25));
-    }
-
-    public abstract void attaquer(Personnage personnage);
-
-    public abstract void lancerSort(Personnage personnage);
+    public abstract void lancerSort(Monstre monstre);
     public abstract void recupererMana();
     public abstract void seSoigner();
 
-    public abstract void setArme(Arme arme);
 
-    public abstract void nouveauTour();
+    public abstract void changerArme();
+
+
+    public abstract void nouveauTour(Monstre monstre);
 
     public abstract void afficher();
 
+    public abstract void changerEtatMort();
+
+    public abstract void changerEtatAgonie();
+
+    public abstract Etat getEtat();
 }

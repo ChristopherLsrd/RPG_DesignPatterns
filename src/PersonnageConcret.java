@@ -1,5 +1,10 @@
 public class PersonnageConcret extends Personnage{
 
+    protected Etat _Etat;
+    protected EtatVivant _EtatVivant;
+    protected EtatAgonie _EtatAgonie;
+    protected EtatMort _EtatMort;
+
     public PersonnageConcret(){
 
         this._EtatMort=new EtatMort(this);
@@ -11,30 +16,95 @@ public class PersonnageConcret extends Personnage{
     }
 
     @Override
-    public void attaquer(Personnage personnage) {
-        System.out.println("Je ne peux pas attaquer, je ne suis pas un guerrier");
+    public Etat getEtat() {
+        return _Etat;
     }
 
     @Override
-    public void lancerSort(Personnage personnage) {
-        System.out.println("Je ne peux pas lancer de sorts, je ne suis pas un sorcier");
+    public int getHp() {
+        return hp;
+    }
+
+    @Override
+    public void setHp(int hp) {
+        this.hp = hp;
+    }
+
+    @Override
+    public int getMana() {
+        return mana;
+    }
+
+    @Override
+    public void setMana(int mana) {
+        this.mana = mana;
+    }
+
+    @Override
+    public Arme getArme() {
+        return arme;
+    }
+
+    @Override
+    public void setArme(Arme arme){
+        System.out.println("Vous ne pouvez pas m'équiper d'une arme, vous n'êtes pas un guerrier");
+    }
+
+
+    @Override
+    public int getAttaque() {
+        return attaque;
+    }
+
+    @Override
+    public void setAttaque(int attaque) {
+        this.attaque = attaque;
+    }
+
+    @Override
+    public void changerEtatMort(){
+        _Etat=_EtatMort;
+
+    }
+
+    @Override
+    public void changerEtatAgonie(){
+        _Etat=_EtatAgonie;
+        setAttaque((int)(getAttaque()*1.25));
+    }
+
+    @Override
+    public void attaquer(Monstre monstre) {
+        System.out.println("Vous ne pouvez pas attaquer, vous n'êtes pas un guerrier");
+    }
+
+    @Override
+    public void attaqueParMonstre(int degats){
+        System.out.println("Vous perdez "+degats+" points de vie");
+        this.setHp(this.getHp()-degats);
+    }
+
+    @Override
+    public void lancerSort(Monstre monstre) {
+        System.out.println("Vous ne pouvez pas lancer de sorts, vous n'êtes pas pas un sorcier");
     }
 
     @Override
     public void recupererMana() {
-        System.out.println("Je ne peux pas récupérer de mana, je ne suis pas un sorcier");
+        System.out.println("Vous ne pouvez pas récupérer de mana, vous n'êtes pas un sorcier");
     }
 
     @Override
     public void seSoigner() {}
 
+
     @Override
-    public void setArme(Arme arme) {
-        System.out.println("Je ne peux pas m'équiper d'une arme, je ne suis pas un guerrier");
+    public void changerArme() {
+        System.out.println("Vous ne pouvez pas changer d'arme, vous n'êtes pas pas un guerrier");
     }
 
     @Override
-    public void nouveauTour(){}
+    public void nouveauTour(Monstre monstre){}
 
     @Override
     public void afficher(){

@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class Guerrier extends Decorator{
@@ -7,29 +8,71 @@ public class Guerrier extends Decorator{
        this.perso.setAttaque(20);
        this.perso.setMana(0);
        this.perso.setHp(100);
+        System.out.println("Choisissez votre arme :");
+
     }
 
 
     @Override
-    public void attaquer(Personnage personnage){
-        personnage.setHp(personnage.getHp()-super.attaque);
-        personnage._Etat.estAttaque();
+    public void attaquer(Monstre monstre){
+        monstre.setHp(monstre.getHp()-this.perso.getAttaque());
 
     }
 
     @Override
     public void setArme(Arme arme) {
-        this.arme = arme;
+        this.perso.arme = arme;
         arme.attaque(this);
     }
 
+    public void changerArme(){
+        Scanner sc =new Scanner(System.in);
+        int choix;
+        do{
+            System.out.println("Choissiez votre arme :");
+            System.out.println("1: Epée");
+            System.out.println("2: Hache");
+            choix=sc.nextInt();
+        }while (choix!=1 && choix !=2);
+        if(choix==1){
+            Arme arme=new Epee();
+            if(perso.getArme().getNom().equals(arme.getNom())){
+                System.out.println("Vous êtes déja équipé de cette arme");
+            }
+            else{
+                perso.setAttaque(perso.getAttaque()-perso.getArme().getDegats());
+                setArme(arme);
+            }
+
+        }
+        else{
+            Arme arme= new Hache();
+            if(perso.getArme().getNom().equals(arme.getNom())){
+                System.out.println("Vous êtes déja équipé de cette arme");
+            }
+            else{
+                perso.setAttaque(perso.getAttaque()-perso.getArme().getDegats());
+                setArme(arme);
+            }
+        }
+
+    }
+
+
+
     public void seSoigner() {
-        this.perso.setHp(this.perso.getHp()+10);
+        if(this.perso.getHp()+10>100){
+            this.perso.setHp(100);
+        }
+        else{
+            this.perso.setHp(this.perso.getHp()+10);
+        }
+
     }
 
     @Override
-    public void nouveauTour() {
-        this.perso.setHp(this.perso.getHp()+10);
+    public void nouveauTour(Monstre monstre) {
+        this.perso.seSoigner();
         Scanner sc=new Scanner(System.in);
         int choix;
         do{
@@ -45,21 +88,28 @@ public class Guerrier extends Decorator{
         }while (choix !=1 && choix !=2 && choix!=3);
         switch (choix){
             case 1:
-                perso.attaquer();
+                this.attaquer(monstre);
                 break;
             case 2:
-                perso.setAttaque(perso.getAttaque()-perso.getArme().getDegats());
-                perso.setArme();
+
+                this.changerArme();
                 break;
             case 3:
-                perso.seSoigner();
+                if(this.perso.getHp()==100){
+                    System.out.println("Votre santé est déjà au maximum");
+                    nouveauTour(monstre);
+                }
+                else{
+                    this.seSoigner();
+                }
+                break;
         }
     }
 
     @Override
     public void afficher(){
-        System.out.println("Points de vie : "+this.getHp());
-        System.out.println("Puissance d'attaque : "+this.getAttaque());
-        System.out.println("Arme : "+this.getArme().getNom());
+        System.out.println("Points de vie : "+this.perso.getHp());
+        System.out.println("Puissance d'attaque : "+this.perso.getAttaque());
+        System.out.println("Arme : "+this.perso.getArme().getNom());
     }
 }

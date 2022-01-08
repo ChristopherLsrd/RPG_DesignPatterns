@@ -21,6 +21,7 @@ public class Arme {
     }
 
     public void attaque(Personnage perso){
+        System.out.println(perso.getAttaque());
         perso.setAttaque(perso.getAttaque()+this.getDegats());
     }
 }
