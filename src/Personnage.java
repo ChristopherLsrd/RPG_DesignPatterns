@@ -1,6 +1,5 @@
 public abstract class Personnage {
 
-    protected String classe;
     protected int hp;
     protected int attaque;
     protected int mana;
@@ -12,11 +11,10 @@ public abstract class Personnage {
     protected EtatMort _EtatMort;
 
 
-   /* public Personnage(int hp, int attaque, int mana,String classe) {
+   /* public Personnage(int hp, int attaque, int mana) {
         this.hp = hp;
         this.attaque = attaque;
         this.mana = mana;
-        this.classe=classe;
 
         this._EtatMort=new EtatMort(this);
         this._EtatAgonie=new EtatAgonie(this);
@@ -54,15 +52,6 @@ public abstract class Personnage {
         return arme;
     }
 
-    public void setArme(Arme arme) {
-        this.arme = arme;
-        arme.attaque(this);
-    }
-
-    public String getClasse() {
-        return classe;
-    }
-
     public void changerEtatMort(){
         _Etat=_EtatMort;
 
@@ -76,11 +65,13 @@ public abstract class Personnage {
     public abstract void attaquer(Personnage personnage);
 
     public abstract void lancerSort(Personnage personnage);
+    public abstract void recupererMana();
+    public abstract void seSoigner();
 
-    public void afficher(){
-        System.out.println(this.getClasse());
-        System.out.println("Points de vie : "+this.getHp());
-        System.out.println("Puissance d'attaque : "+this.getAttaque());
-        System.out.println("Mana : "+this.getMana());
-    }
+    public abstract void setArme(Arme arme);
+
+    public abstract void nouveauTour();
+
+    public abstract void afficher();
+
 }
