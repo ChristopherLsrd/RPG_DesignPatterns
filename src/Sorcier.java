@@ -74,6 +74,7 @@ public class Sorcier extends Decorator{
 
     @Override
     public void afficher(){
+        System.out.println("Sorcier :");
         System.out.println("Points de vie : "+perso.getHp());
         System.out.println("Puissance d'attaque : "+perso.getAttaque());
         System.out.println("Mana : "+perso.getMana());

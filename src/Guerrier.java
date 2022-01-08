@@ -72,6 +72,7 @@ public class Guerrier extends Decorator{
 
     @Override
     public void nouveauTour(Monstre monstre) {
+
         this.perso.seSoigner();
         Scanner sc=new Scanner(System.in);
         int choix;
@@ -108,6 +109,7 @@ public class Guerrier extends Decorator{
 
     @Override
     public void afficher(){
+        System.out.println("Guerrier :");
         System.out.println("Points de vie : "+this.perso.getHp());
         System.out.println("Puissance d'attaque : "+this.perso.getAttaque());
         System.out.println("Arme : "+this.perso.getArme().getNom());

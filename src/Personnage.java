@@ -5,13 +5,9 @@ public abstract class Personnage {
     protected int mana;
     protected Arme arme;
 
-
-
-
     public abstract int getHp();
 
     public abstract void setHp(int hp);
-
 
     public abstract int getMana();
 
@@ -30,12 +26,12 @@ public abstract class Personnage {
     public abstract void attaqueParMonstre(int degats);
 
     public abstract void lancerSort(Monstre monstre);
+
     public abstract void recupererMana();
+
     public abstract void seSoigner();
 
-
     public abstract void changerArme();
-
 
     public abstract void nouveauTour(Monstre monstre);
 
