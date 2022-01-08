@@ -1,4 +1,4 @@
-public class Personnage {
+public abstract class Personnage {
 
     protected String classe;
     protected int hp;
@@ -12,7 +12,7 @@ public class Personnage {
     protected EtatMort _EtatMort;
 
 
-    public Personnage(int hp, int attaque, int mana,String classe) {
+   /* public Personnage(int hp, int attaque, int mana,String classe) {
         this.hp = hp;
         this.attaque = attaque;
         this.mana = mana;
@@ -24,7 +24,7 @@ public class Personnage {
 
         this._Etat=_EtatVivant;
 
-    }
+    }*/
 
     public int getHp() {
         return hp;
@@ -72,6 +72,10 @@ public class Personnage {
         _Etat=_EtatAgonie;
         setAttaque((int)(getAttaque()*1.25));
     }
+
+    public abstract void attaquer(Personnage personnage);
+
+    public abstract void lancerSort(Personnage personnage);
 
     public void afficher(){
         System.out.println(this.getClasse());

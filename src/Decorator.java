@@ -1,17 +1,23 @@
-public abstract class Decorator extends Arme{
+public abstract class Decorator extends Personnage{
 
-    protected Arme arme;
-    protected int degats;
+    protected Personnage perso;
 
-    public Decorator(Arme arme, int degats) {
-        this.arme = arme;
-        this.degats = degats;
+    public Decorator(Personnage perso) {
+        this.perso=perso;
+
+    }
+
+
+    @Override
+    public void attaquer(Personnage perso){
+        perso.attaquer(perso);
     }
 
     @Override
-    void attaque(Personnage personnage){
-        personnage.setAttaque(personnage.getAttaque()+this.degats);
+    public void lancerSort(Personnage perso){
+        perso.lancerSort(perso);
     }
+
 
 
 }

@@ -1,7 +1,7 @@
-public class Epee extends Decorator{
+public class Epee extends Arme{
 
-    public Epee(Arme arme) {
-        super(arme, 15);
+    public Epee() {
+        super(15);
     }
 
 
