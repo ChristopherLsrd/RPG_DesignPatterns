@@ -6,48 +6,13 @@ public abstract class Decorator extends Personnage{
         this.perso=perso;
     }
 
+    public abstract void displayCloth();
+
+    /**
     @Override
     public Etat getEtat(){
         return perso.getEtat();
     }
-
-    @Override
-    public int getHp() {
-        return perso.getHp();
-    }
-
-    @Override
-    public void setHp(int hp) {
-        perso.setHp(hp);
-    }
-
-    @Override
-    public int getMana() {
-        return perso.getMana();
-    }
-
-    @Override
-    public void setMana(int mana) {
-perso.setMana(mana);
-    }
-
-    @Override
-    public int getAttaque() {
-        return perso.getAttaque();
-    }
-
-    @Override
-    public void setAttaque(int attaque) {
-        perso.setAttaque(attaque);
-    }
-
-    @Override
-    public Arme getArme() {
-        return perso.getArme();
-    }
-
-    @Override
-    public void setArme(Arme arme) {perso.setArme(arme);}
 
     @Override
     public void changerEtatAgonie() {
@@ -92,6 +57,6 @@ perso.setMana(mana);
     public void afficher(){
         perso.afficher();
     }
-
+    **/
 
 }

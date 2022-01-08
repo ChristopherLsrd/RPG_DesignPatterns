@@ -4,8 +4,6 @@ import java.util.List;
 public class App {
     public static void main(String[] args) {
 
-
-
         List<String> nomMonstre=new ArrayList<>();
         nomMonstre.add("Orc");
         nomMonstre.add("Troll");

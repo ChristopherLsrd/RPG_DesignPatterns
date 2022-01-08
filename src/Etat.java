@@ -8,9 +8,9 @@ public abstract class Etat {
         vieIni=perso.getHp();
     }
 
-    public void estAttaque(){
+    public void estAttaque(){}
 
-    }
+    public void
 
 
 }
