@@ -13,7 +13,7 @@ public abstract class Etat {
 
     public void estAttaque(){}
 
-    public void attack(Personnage perso,float proba){}
+    public void attack(Personnage perso){}
 
     public void spell(Personnage perso){}
 

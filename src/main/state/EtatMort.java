@@ -9,7 +9,7 @@ public class EtatMort extends Etat{
     }
 
     @Override
-    public void attack(Personnage perso,float proba) {
+    public void attack(Personnage perso) {
 
     }
 

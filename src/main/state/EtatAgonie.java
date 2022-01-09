@@ -16,10 +16,10 @@ public class EtatAgonie extends Etat {
     }
 
     @Override
-    public void attack(Personnage perso, float proba) {
+    public void attack(Personnage perso) {
         double probaReussite = Math.random();
 
-        if (probaReussite > proba) {
+        if (probaReussite > this.perso.getProbaAttack()) {
             System.out.println("Attaque ratée");
         } else {
             perso.setHp(perso.getHp() - (int) (this.perso.getAttaque() * 1.25));

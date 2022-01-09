@@ -82,6 +82,10 @@ public abstract class Personnage implements PersonnageSujet {
         return spell;
     }
 
+    public double getProbaAttack() {
+        return probaAttack;
+    }
+
     public void equipStuff() {
         this.hat = getHat();
         this.chest = getChest();
@@ -104,8 +108,8 @@ public abstract class Personnage implements PersonnageSujet {
         etat.estAttaque();
     }
 
-    public void attack(Personnage perso,float proba) {
-        etat.attack(perso,proba);
+    public void attack(Personnage perso) {
+        etat.attack(perso);
     }
 
     public void spell(Personnage perso) {
