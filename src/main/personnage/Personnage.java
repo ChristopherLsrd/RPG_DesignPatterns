@@ -1,5 +1,7 @@
 package main.personnage;
 
+import main.observer.Observer;
+import main.observer.PersonnageSujet;
 import main.personnage.CreatePerso;
 import main.personnage.chest.Chest;
 import main.personnage.hat.Hat;
@@ -9,7 +11,10 @@ import main.state.EtatAgonie;
 import main.state.EtatMort;
 import main.state.EtatVivant;
 
-public abstract class Personnage {
+import java.util.ArrayList;
+import java.util.List;
+
+public abstract class Personnage implements PersonnageSujet {
 
     protected int hp;
     protected int attaque;
@@ -23,6 +28,7 @@ public abstract class Personnage {
     protected Etat etatMort;
     protected Etat etatVivant;
     protected Etat etatAgonie;
+    private List<Observer> observers;
 
     public Personnage(int hp, int attaque, int mana, Spell spell, CreatePerso cp) {
         this.hp = hp;
@@ -35,6 +41,8 @@ public abstract class Personnage {
         this.etatAgonie = new EtatAgonie(this);
         this.etatVivant = new EtatVivant(this);
         this.etatMort = new EtatMort(this);
+
+        this.observers = new ArrayList<>();
     }
 
     public int getHp() {
@@ -43,6 +51,7 @@ public abstract class Personnage {
 
     public void setHp(int hp) {
         this.hp = hp;
+        notifierObserver();
     }
 
     public int getAttaque() {
@@ -59,6 +68,7 @@ public abstract class Personnage {
 
     public void setMana(int mana) {
         this.mana = mana;
+        notifierObserver();
     }
 
     public Spell getSpell() {
@@ -109,18 +119,33 @@ public abstract class Personnage {
 
     public void changerEtatMort() {
         etat = etatMort;
+        notifierObserver();
     }
 
     public void changerEtatAgonie() {
         etat = etatAgonie;
+        notifierObserver();
     }
 
     public void changerEtatVivant() {
         etat = etatVivant;
+        notifierObserver();
     }
 
     public Etat getEtat() {
         return etat;
+    }
+
+    public void enregistrerObserver(Observer obs) {
+        observers.add(obs);
+    }
+
+    public void supprimerObserver(Observer obs) {
+        observers.remove(obs);
+    }
+
+    public void notifierObserver() {
+        observers.forEach(obs -> obs.update(this));
     }
 
     @Override

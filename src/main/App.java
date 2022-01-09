@@ -1,5 +1,9 @@
 package main;
 
+import main.observer.DisplayEtat;
+import main.observer.DisplayHp;
+import main.observer.DisplayMana;
+import main.observer.Observer;
 import main.personnage.*;
 
 import java.util.ArrayList;
@@ -28,11 +32,12 @@ public class App {
                 mainPerso = new Sorcier(cm);
                 break;
             default:
-
+                System.exit(1);
                 break;
-
         }
         mainPerso.equipStuff();
+        initObserver(mainPerso);
+
         System.out.println(mainPerso.toString());
     }
 
@@ -45,5 +50,12 @@ public class App {
         ennemies.add(new Sorcier(50, 15, 110, spellMageEnnemie));
         ennemies.add(new Guerrier(85, 35, 40, spellWarriorEnnemie));
         return ennemies;
+    }
+    private static void initObserver(Personnage personnage){
+        new DisplayEtat(personnage);
+        new DisplayMana(personnage);
+        new DisplayHp(personnage);
+        personnage.setHp(100);
+        personnage.setMana(20);
     }
 }

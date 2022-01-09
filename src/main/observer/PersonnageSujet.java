@@ -1,6 +1,6 @@
-package main;
+package main.observer;
 
-public interface Sujet {
+public interface PersonnageSujet {
     public void enregistrerObserver(Observer obs);
     public void supprimerObserver(Observer obs);
     public void notifierObserver();
