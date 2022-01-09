@@ -9,12 +9,12 @@ public class EtatMort extends Etat{
     }
 
     @Override
-    public void attack() {
+    public void attack(Personnage perso,float proba) {
 
     }
 
     @Override
-    public void spell() {
+    public void spell(Personnage perso) {
 
     }
 
