@@ -18,8 +18,9 @@ public abstract class Personnage implements PersonnageSujet {
 
     protected int hp;
     protected int attaque;
-    protected int mana;
+    protected double mana;
     protected int hpIni;
+    protected double probaAttack;
     protected Spell spell;
     protected CreatePerso cp;
     protected Hat hat;
@@ -31,7 +32,7 @@ public abstract class Personnage implements PersonnageSujet {
     protected Etat etatAgonie;
     private List<Observer> observers;
 
-    public Personnage(int hp, int attaque, int mana, Spell spell, CreatePerso cp) {
+    public Personnage(int hp, int attaque, double mana, double probaAttack, Spell spell, CreatePerso cp) {
         this.hp = hp;
         this.hpIni=this.hp;
         this.attaque = attaque;
@@ -68,11 +69,11 @@ public abstract class Personnage implements PersonnageSujet {
         this.attaque = attaque;
     }
 
-    public int getMana() {
+    public double getMana() {
         return mana;
     }
 
-    public void setMana(int mana) {
+    public void setMana(double mana) {
         this.mana = mana;
         notifierObserver();
     }

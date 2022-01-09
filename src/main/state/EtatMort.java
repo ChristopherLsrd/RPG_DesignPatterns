@@ -25,6 +25,12 @@ public class EtatMort extends Etat{
 
     @Override
     public void heal() {
+        double probaReussite = Math.random();
 
+        if (probaReussite <= 0.10) {
+            if (checkMana(30)) {
+                perso.setHp(40);
+            }
+        }
     }
 }

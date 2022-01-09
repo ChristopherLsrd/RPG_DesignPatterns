@@ -23,6 +23,14 @@ public abstract class Etat {
 
     public void esquive(){}
 
+    protected boolean checkMana(double mana){
+        if ((this.perso.getMana() - mana) >= 0){
+            return true;
+        } else {
+            System.out.println("Pas assez de mana");
+            return false;
+        }
+    }
     //public abstract void attaqueParMonstre(int degats);
 
     //public abstract void nouveauTour(Monstre monstre);

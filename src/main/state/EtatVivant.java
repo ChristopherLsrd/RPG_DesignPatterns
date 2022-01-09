@@ -10,7 +10,7 @@ public class EtatVivant extends Etat{
 
     @Override
     public void estAttaque() {
-        if(perso.getHp()<(perso.getHpIni()*0.15)){
+        if(perso.getHp() < (perso.getHpIni()*0.15)){
             perso.changerEtatAgonie();
         }
         else if (perso.getHp()<=0){
@@ -21,29 +21,26 @@ public class EtatVivant extends Etat{
 
     @Override
     public void attack(Personnage perso,float proba) {
-        double probaReussite=Math.random();
-        if(probaReussite>proba){
+        double probaReussite = Math.random();
+        if(probaReussite >= proba){
             System.out.println("Attaque ratée");
         }
         else{
-            perso.setHp(perso.getHp()-this.perso.getAttaque());
+            perso.setHp(perso.getHp() - this.perso.getAttaque());
         }
-
     }
 
     @Override
     public void spell(Personnage perso) {
-        double proba=Math.random();
-        if(this.perso.getSpell().getManaCost()>this.perso.getMana()){
-            System.out.println("Vous n'avez pas assez de mana pour lancer ce sort");
-        }
-        else{
-            if(proba>this.perso.getSpell().getProbability()){
+        double probaReussite = Math.random();
+
+        if(checkMana(this.perso.getSpell().getManaCost())){
+            if(probaReussite >= this.perso.getSpell().getProbability()){
                 System.out.println("Sort raté");
             }
             else{
-                perso.setHp(perso.getHp()-this.perso.getAttaque());
-                this.perso.setMana(this.perso.getMana()-this.perso.getSpell().getManaCost());
+                perso.setHp(perso.getHp() - this.perso.getAttaque());
+                this.perso.setMana(this.perso.getMana() - this.perso.getSpell().getManaCost());
             }
         }
     }
@@ -55,11 +52,13 @@ public class EtatVivant extends Etat{
 
     @Override
     public void heal() {
-        if(this.perso.getHp()==100){
+        if(this.perso.getHp() == this.perso.getHpIni()){
             System.out.println("Votre santé est déjà au maximum");
         }
         else {
-            perso.setHp(perso.getHp()+20);
+            if (checkMana(30)){
+                perso.setHp(perso.getHp()+40);
+            }
         }
     }
 }

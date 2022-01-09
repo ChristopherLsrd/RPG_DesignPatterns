@@ -38,7 +38,6 @@ public class App {
         mainPerso.equipStuff();
         initObserver(mainPerso);
 
-        System.out.println(mainPerso.toString());
     }
 
     private static ArrayList<Personnage> initEnnemies() {
