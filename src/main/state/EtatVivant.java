@@ -10,13 +10,13 @@ public class EtatVivant extends Etat{
 
     @Override
     public void estAttaque() {
-        if(perso.getHp() < (perso.getHpIni()*0.15)){
+        if (perso.getHp()<=0){
+            perso.changerEtatMort();
+        }
+        else if(perso.getHp() < (perso.getHpIni()*0.15)){
             perso.changerEtatAgonie();
         }
-        else if (perso.getHp()<=0){
-            perso.changerEtatMort();
 
-        }
     }
 
     @Override
@@ -56,12 +56,18 @@ public class EtatVivant extends Etat{
 
     @Override
     public void heal() {
-        if(this.perso.getHp() == this.perso.getHpIni()){
+        if(this.perso.getHp() >= this.perso.getHpIni()){
             System.out.println("Votre santé est déjà au maximum");
         }
         else {
             if (checkMana(30)){
-                perso.setHp(perso.getHp()+40);
+                if(perso.getHp()+40> perso.getHpIni()){
+                    perso.setHp(perso.getHpIni());
+                }
+                else{
+                    perso.setHp(perso.getHp()+40);
+                }
+
             }
         }
     }

@@ -34,7 +34,7 @@ public abstract class Personnage implements PersonnageSujet {
 
     public Personnage(int hp, int attaque, double mana, double probaAttack, Spell spell, CreatePerso cp) {
         this.hp = hp;
-        this.hpIni=this.hp;
+        this.hpIni = this.hp;
         this.attaque = attaque;
         this.mana = mana;
         this.spell = spell;
@@ -58,7 +58,7 @@ public abstract class Personnage implements PersonnageSujet {
         notifierObserver();
     }
 
-    public int getHpIni(){
+    public int getHpIni() {
         return this.hpIni;
     }
 
@@ -87,10 +87,13 @@ public abstract class Personnage implements PersonnageSujet {
         return probaAttack;
     }
 
-    public boolean isDead(){
-        return hp <= 0;
+    public void setProbaAttack(double probaAttack) {
+        this.probaAttack = probaAttack;
     }
 
+    public boolean isDead() {
+        return hp <= 0;
+    }
 
     public void equipStuff() {
         this.hat = getHat();
@@ -128,10 +131,6 @@ public abstract class Personnage implements PersonnageSujet {
 
     public void heal() {
         etat.heal();
-    }
-
-    public void esquive() {
-        etat.esquive();
     }
 
     public void changerEtatMort() {
