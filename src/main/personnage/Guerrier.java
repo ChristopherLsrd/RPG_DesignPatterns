@@ -3,7 +3,7 @@ package main.personnage;
 public class Guerrier extends Personnage{
 
     public Guerrier(CreatePerso cp) {
-        super(200, 50, 40, 0.75, new Spell(20, (float) 0.65, "Lance une hache"), cp);
+        super(125, 40, 40, 0.75, new Spell(20, (float) 0.65, "Lance une hache"), cp);
     }
 
     public Guerrier(int hp, int attack, int mana, Spell spell) {

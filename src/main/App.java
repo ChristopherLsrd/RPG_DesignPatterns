@@ -40,9 +40,9 @@ public class App {
 
         int i=0;
         int chooseAction;
-        while(i<ennemies.size() && !mainPerso.getEtat().getClass().getName().equals("EtatMort")){
+        while(i<ennemies.size() && !mainPerso.isDead()){
             Personnage ennemiEnCours=ennemies.get(i);
-            while (ennemiEnCours.getHp()>0 && !mainPerso.getEtat().getClass().getName().equals("EtatMort")){
+            while (!ennemiEnCours.isDead() && !mainPerso.isDead()){
                 System.out.println("\u001B[33m"+"⚠ NOUVEAU TOUR ⚠"+ANSI_RESET);
                 System.out.println("Votre héro : "+"\u001B[31m"+mainPerso.getHp()+ "❤ \u001B[34m"+mainPerso.getMana()+"⭐"+ANSI_RESET+"\t Ennemi : \u001B[31m"+ennemiEnCours.getHp()+ " ❤ \u001B[34m"+ennemiEnCours.getMana()+"⭐"+ANSI_RESET);
                 chooseAction=0;
@@ -98,15 +98,15 @@ public class App {
 
 
             }
-            else if(mainPerso.getEtat().getClass().getName().equals("EtatMort")){
-                System.out.println("Votre "+ mainPerso.getClass().getName() +"est mort");
+            else if(mainPerso.isDead()){
+                System.out.println("Votre "+ mainPerso.getClass().getSimpleName() +"est mort");
                 System.exit(0);
             }
 
         }
 
-        if(mainPerso.getEtat().getClass().getName().equals("EtatMort")){
-            System.out.println("Votre "+ mainPerso.getClass().getName() +"est mort");
+        if(mainPerso.isDead()){
+            System.out.println("Votre "+ mainPerso.getClass().getSimpleName() +" est mort");
             System.exit(0);
         }else{
             System.out.println("Vous avez gagné !");
@@ -120,9 +120,9 @@ public class App {
         Spell spellMageEnnemie = new Spell(55, (float) 0.60, "Trait de feu");
 
         ArrayList<Personnage> ennemies = new ArrayList<>();
-        ennemies.add(new Guerrier(75, 25, 30, spellWarriorEnnemie));
-        ennemies.add(new Sorcier(50, 15, 110, spellMageEnnemie));
-        ennemies.add(new Guerrier(85, 35, 40, spellWarriorEnnemie));
+        ennemies.add(new Guerrier(75, 30, 30, spellWarriorEnnemie));
+        ennemies.add(new Sorcier(60, 25, 110, spellMageEnnemie));
+        ennemies.add(new Guerrier(95, 40, 40, spellWarriorEnnemie));
         return ennemies;
     }
     private static void initObserver(Personnage personnage){
