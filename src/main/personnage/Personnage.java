@@ -87,6 +87,11 @@ public abstract class Personnage implements PersonnageSujet {
         return probaAttack;
     }
 
+    public boolean isDead(){
+        return hp <= 0;
+    }
+
+
     public void equipStuff() {
         this.hat = getHat();
         this.chest = getChest();

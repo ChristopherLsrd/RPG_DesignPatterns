@@ -87,13 +87,13 @@ public class App {
                 }
 
             }
-            if(ennemiEnCours.getEtat().getClass().getName().equals("EtatMort")){
+            if(ennemiEnCours.isDead()){
                 i++;
                 if(i<ennemies.size()){
-                    System.out.println(ennemiEnCours.getClass().getName()+" est mort ! un autre ennemi arrive !");
+                    System.out.println(ennemiEnCours.getClass().getSimpleName()+" est mort ! Un autre ennemi arrive !");
                 }
                 else{
-                    System.out.println(ennemiEnCours.getClass().getName()+" est mort !");
+                    System.out.println(ennemiEnCours.getClass().getSimpleName()+" est mort !");
                 }
 
 
