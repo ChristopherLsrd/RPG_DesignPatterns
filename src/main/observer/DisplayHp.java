@@ -12,6 +12,6 @@ public class DisplayHp implements Observer{
 
     @Override
     public void update(Personnage personnage) {
-        System.out.println(personnage.getHp() + " ❤");
+        System.out.println("\u001B[31m"+personnage.getHp() + " ❤"+"\u001B[0m" );
     }
 }

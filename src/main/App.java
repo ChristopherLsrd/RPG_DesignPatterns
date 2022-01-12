@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class App {
-
+    public static final String ANSI_RESET = "\u001B[0m";
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         ArrayList<Personnage> ennemies = initEnnemies();
@@ -43,14 +43,15 @@ public class App {
         while(i<ennemies.size() && !mainPerso.getEtat().getClass().getName().equals("EtatMort")){
             Personnage ennemiEnCours=ennemies.get(i);
             while (ennemiEnCours.getHp()>0 && !mainPerso.getEtat().getClass().getName().equals("EtatMort")){
-                System.out.println("Nouveau tour :");
+                System.out.println("\u001B[33m"+"⚠ NOUVEAU TOUR ⚠"+ANSI_RESET);
+                System.out.println("Votre héro : "+"\u001B[31m"+mainPerso.getHp()+ "❤ \u001B[34m"+mainPerso.getMana()+"⭐"+ANSI_RESET+"\t Ennemi : \u001B[31m"+ennemiEnCours.getHp()+ " ❤ \u001B[34m"+ennemiEnCours.getMana()+"⭐"+ANSI_RESET);
                 chooseAction=0;
                 do{
                     System.out.println("Choisissez votre action: ");
-                    System.out.println("1. Attaquer");
-                    System.out.println("2. Lancer un sort");
-                    System.out.println("3. Régénerer votre mana");
-                    System.out.println("4. Vous soigner");
+                    System.out.println("1. Attaquer ⚔");
+                    System.out.println("2. Lancer un sort \uD83D\uDCDC");
+                    System.out.println("3. Régénerer votre mana \u001B[34m⭐"+ANSI_RESET);
+                    System.out.println("4. Vous soigner \u001B[31m❤"+ANSI_RESET);
                     chooseAction=sc.nextInt();
                     if(chooseAction!=1 && chooseAction!=2 && chooseAction!=3 && chooseAction!=4){
                         System.out.println("Ce choix ne correspond à aucune action");

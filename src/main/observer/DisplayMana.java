@@ -12,6 +12,6 @@ public class DisplayMana implements Observer{
 
     @Override
     public void update(Personnage personnage) {
-        System.out.println(personnage.getMana() + " ⭐");
+        System.out.println("\u001B[34m "+personnage.getMana() + "⭐"+"\u001B[0m" );
     }
 }

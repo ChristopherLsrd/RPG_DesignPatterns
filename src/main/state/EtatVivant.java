@@ -23,7 +23,7 @@ public class EtatVivant extends Etat{
     public void attack(Personnage perso) {
         double probaReussite = Math.random();
         if(probaReussite >= this.perso.getProbaAttack()){
-            System.out.println("Attaque ratée\n");
+            System.out.println("Attaque ratée");
         }
         else{
             perso.setHp(perso.getHp() - this.perso.getAttaque());
@@ -38,7 +38,7 @@ public class EtatVivant extends Etat{
 
         if(checkMana(this.perso.getSpell().getManaCost())){
             if(probaReussite >= this.perso.getSpell().getProbability()){
-                System.out.println("Sort raté\n");
+                System.out.println("Sort raté");
             }
             else{
                 perso.setHp(perso.getHp() - this.perso.getAttaque());
@@ -57,7 +57,7 @@ public class EtatVivant extends Etat{
     @Override
     public void heal() {
         if(this.perso.getHp() == this.perso.getHpIni()){
-            System.out.println("Votre santé est déjà au maximum\n");
+            System.out.println("Votre santé est déjà au maximum");
         }
         else {
             if (checkMana(30)){
