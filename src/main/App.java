@@ -71,8 +71,7 @@ public class App {
                         mainPerso.heal();
                         break;
                 }
-                //!ennemiEnCours.getEtat().getClass().getName().equals("EtatMort)"
-                if(ennemiEnCours.getHp()>=0){
+                if(!ennemiEnCours.isDead()){
                     System.out.printf("HP de l'ennemi : "+ennemiEnCours.getHp()+"\n");
                     System.out.printf("Tour de l'ennemi :");
                     double action=Math.random();
