@@ -39,6 +39,7 @@ public abstract class Personnage implements PersonnageSujet {
         this.mana = mana;
         this.spell = spell;
         this.cp = cp;
+        this.probaAttack = probaAttack;
 
         this.etat = new EtatVivant(this);
         this.etatAgonie = new EtatAgonie(this);

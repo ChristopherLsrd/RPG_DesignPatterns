@@ -42,9 +42,9 @@ public class EtatVivant extends Etat{
             }
             else{
                 perso.setHp(perso.getHp() - this.perso.getAttaque());
+                System.out.printf("Sort lancé et réussi\n");
                 this.perso.setMana(this.perso.getMana() - this.perso.getSpell().getManaCost());
                 perso.estAttaque();
-                System.out.printf("Sort lancé et réussi\n");
             }
         }
     }
