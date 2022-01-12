@@ -20,9 +20,11 @@ public class EtatAgonie extends Etat {
         double probaReussite = Math.random();
 
         if (probaReussite > this.perso.getProbaAttack()) {
-            System.out.println("Attaque ratée");
+            System.out.println("Attaque ratée\n");
         } else {
             perso.setHp(perso.getHp() - (int) (this.perso.getAttaque() * 1.25));
+            perso.estAttaque();
+            System.out.printf("Attaque réussie\n");
         }
     }
 
@@ -33,10 +35,13 @@ public class EtatAgonie extends Etat {
 
         if (checkMana(manaCost)) {
             if (probaReussite > this.perso.getSpell().getProbability()) {
-                System.out.println("Sort raté");
+                System.out.println("Sort raté\n");
             } else {
+
                 perso.setHp(perso.getHp() - this.perso.getAttaque());
                 this.perso.setMana(this.perso.getMana() - (int) manaCost);
+                perso.estAttaque();
+                System.out.printf("Sort lancé et réussi\n");
             }
         }
     }

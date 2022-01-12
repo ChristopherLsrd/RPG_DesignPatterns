@@ -42,7 +42,7 @@ public class App {
         int chooseAction;
         while(i<ennemies.size() && !mainPerso.getEtat().getClass().getName().equals("EtatMort")){
             Personnage ennemiEnCours=ennemies.get(i);
-            while (!ennemiEnCours.getEtat().getClass().getName().equals("EtatMort") && !mainPerso.getEtat().getClass().getName().equals("EtatMort")){
+            while (ennemiEnCours.getHp()>0 && !mainPerso.getEtat().getClass().getName().equals("EtatMort")){
                 System.out.println("Nouveau tour :");
                 chooseAction=0;
                 do{
@@ -59,16 +59,31 @@ public class App {
                 switch (chooseAction){
                     case 1:
                         mainPerso.attack(ennemiEnCours);
+                        break;
                     case 2:
                         mainPerso.spell(ennemiEnCours);
+                        break;
                     case 3:
                         mainPerso.regenMana();
+                        break;
                     case 4:
                         mainPerso.heal();
+                        break;
                 }
-
-                if(!ennemiEnCours.getEtat().getClass().getName().equals("EtatMort")){
-                    ennemiEnCours.attack(mainPerso);
+                //!ennemiEnCours.getEtat().getClass().getName().equals("EtatMort)"
+                if(ennemiEnCours.getHp()>=0){
+                    System.out.printf("HP de l'ennemi : "+ennemiEnCours.getHp()+"\n");
+                    System.out.printf("Tour de l'ennemi :");
+                    double action=Math.random();
+                    if(action<=0.5){
+                        ennemiEnCours.attack(mainPerso);
+                    }
+                    else {
+                        ennemiEnCours.spell(mainPerso);
+                    }
+                }
+                else{
+                    ennemiEnCours.changerEtatMort();
                 }
 
             }
@@ -87,6 +102,7 @@ public class App {
                 System.out.println("Votre "+ mainPerso.getClass().getName() +"est mort");
                 System.exit(0);
             }
+
         }
 
         if(mainPerso.getEtat().getClass().getName().equals("EtatMort")){
@@ -96,7 +112,6 @@ public class App {
             System.out.println("Vous avez gagné !");
             System.exit(0);
         }
-
         System.out.println(mainPerso.toString());
     }
 
@@ -114,7 +129,7 @@ public class App {
         new DisplayEtat(personnage);
         new DisplayMana(personnage);
         new DisplayHp(personnage);
-        personnage.setHp(100);
-        personnage.setMana(20);
+        /*personnage.setHp(100);
+        personnage.setMana(20);*/
     }
 }
