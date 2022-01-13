@@ -9,21 +9,6 @@ public class EtatMort extends Etat{
     }
 
     @Override
-    public void attack(Personnage perso) {
-
-    }
-
-    @Override
-    public void spell(Personnage perso) {
-
-    }
-
-    @Override
-    public void regenMana() {
-
-    }
-
-    @Override
     public void heal() {
         double probaReussite = Math.random();
 

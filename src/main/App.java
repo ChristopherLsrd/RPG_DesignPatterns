@@ -3,7 +3,6 @@ package main;
 import main.observer.DisplayEtat;
 import main.observer.DisplayHp;
 import main.observer.DisplayMana;
-import main.observer.Observer;
 import main.personnage.*;
 
 import java.util.ArrayList;
@@ -17,9 +16,11 @@ public class App {
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
+
+        //init ennemie personnage
         ArrayList<Personnage> ennemies = initEnnemies();
 
-        // Choose main.personnage
+        // Choose personnage
         Personnage mainPerso = null;
         int choosePerso = 0;
         System.out.println("Choississez un personnage : ");
@@ -101,7 +102,7 @@ public class App {
 
             //Fin du jeu
             } else if (mainPerso.isDead()) {
-                System.out.println("Votre " + mainPerso.getClass().getSimpleName() + "est mort");
+                System.out.println("Votre " + mainPerso.getClass().getSimpleName() + " est mort");
                 System.exit(0);
             }
 
